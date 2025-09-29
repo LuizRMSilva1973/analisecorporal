@@ -1,5 +1,11 @@
 # Análise Corporal 3D — Medição Automática de Circunferências
 
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+[![Open3D](https://img.shields.io/badge/Open3D-ready-success)](http://www.open3d.org/)
+[![License](https://img.shields.io/github/license/LuizRMSilva1973/analisecorporal)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/LuizRMSilva1973/analisecorporal)](https://github.com/LuizRMSilva1973/analisecorporal/commits/main)
+[![Repo size](https://img.shields.io/github/repo-size/LuizRMSilva1973/analisecorporal)](https://github.com/LuizRMSilva1973/analisecorporal)
+
 Sistema em Python para medir circunferências corporais automaticamente a partir de nuvens de pontos 3D (formato `.ply`). O pipeline realiza pré‑processamento geométrico e extrai perímetros em alturas padronizadas do corpo, gerando um relatório em CSV. Projetado para funcionar com dados de scanners 3D e arquivos sintéticos de teste.
 
 — Consulte também: `proposta_tecnica_comercial_scaner_corporal.md`
@@ -34,6 +40,26 @@ Arquivos‑chave:
 - `src/measurement.py`: cálculo das circunferências por fatia.
 - `src/config.py`: parâmetros do pipeline (processamento, pontos de medida e logging).
 
+### Visual
+
+Diagrama do pipeline de medição:
+
+```mermaid
+flowchart LR
+    A[.ply em data/] --> B[Carregar nuvem (Open3D)]
+    B --> C[Remover outliers]
+    C --> D[Centralizar e normais]
+    D --> E[Fatiar por Y em pontos]
+    E --> F[Projeção XZ]
+    F --> G[Casco convexo (ConvexHull)]
+    G --> H[Somar arestas => perímetro]
+    H --> I[Salvar CSV + log]
+```
+
+Opcionalmente, substitua por um print/gif do seu fluxo real:
+
+![Pipeline preview](docs/assets/pipeline.png)
+
 ## Requisitos
 
 - Python 3.10+
@@ -61,6 +87,19 @@ pip install -r requirements.txt
 3. Resultados:
    - `output/measurements.csv`: `Ponto_Medido,Circunferencia_mm`.
    - `output/processing.log`: log detalhado do pipeline.
+
+### Exemplo de Saída
+
+`output/measurements.csv` (exemplo):
+
+```csv
+Ponto_Medido,Circunferencia_mm
+perna_panturrilha,310.42
+perna_coxa,495.87
+torso_abdomen,890.13
+torso_cintura,780.66
+torso_peito,960.55
+```
 
 ## Gerar Dados de Exemplo (Opcional)
 

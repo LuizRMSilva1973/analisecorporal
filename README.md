@@ -144,4 +144,4 @@ pytest -q
 
 ## Licença
 
-Este projeto é distribuído sob termos a definir pelo(s) autor(es). Caso deseje uma licença específica (ex.: MIT), ajuste conforme necessário.
+Este projeto é distribuído sob termos definidos pelo(s) autor(es).

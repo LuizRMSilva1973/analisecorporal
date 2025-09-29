@@ -34,9 +34,22 @@ def extract_circumferences(pcd):
 
         # Selecionar os pontos que compõem a fatia horizontal
         slice_thickness = MEASUREMENT_PARAMS["slice_thickness_m"]
-        slice_indices = np.where(np.abs(points[:, 1] - slice_y) < (slice_thickness / 2.0))[0]
+        # Primeiro, tenta selecionar pontos dentro da espessura definida
+        diffs = np.abs(points[:, 1] - slice_y)
+        slice_indices = np.where(diffs < (slice_thickness / 2.0))[0]
 
-        if len(slice_indices) < 20: # Aumentado o limite mínimo de pontos
+        # Fallback: se não houver pontos suficientes, usa a camada Y mais próxima
+        if len(slice_indices) < 10:
+            nearest_diff = diffs.min()
+            # Seleciona todos os pontos que pertencem à camada mais próxima
+            # (todos que possuem o mesmo y mínimo dentro de uma tolerância numérica)
+            tol = 1e-9
+            slice_indices = np.where(np.isclose(diffs, nearest_diff, atol=tol))[0]
+            logging.debug(
+                f"Usando camada Y mais próxima (Δ={nearest_diff:.6f}) para '{name}' com {len(slice_indices)} pontos."
+            )
+
+        if len(slice_indices) < 3:
             logging.warning(f"Pontos insuficientes ({len(slice_indices)}) para medir '{name}'.")
             measurements[name] = 0
             continue

@@ -1,7 +1,6 @@
 import open3d as o3d
-import numpy as np
 import logging
-from .config import PROCESSING_PARAMS
+from config import PROCESSING_PARAMS
 
 def process_point_cloud(file_path):
     """
@@ -43,4 +42,3 @@ def process_point_cloud(file_path):
 
     logging.info("Pré-processamento da nuvem de pontos concluído.")
     return pcd
-

@@ -1,5 +1,6 @@
 # Análise Corporal 3D — Medição Automática de Circunferências
 
+[![CI](https://github.com/LuizRMSilva1973/analisecorporal/actions/workflows/ci.yml/badge.svg)](https://github.com/LuizRMSilva1973/analisecorporal/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![Open3D](https://img.shields.io/badge/Open3D-ready-success)](http://www.open3d.org/)
 [![License](https://img.shields.io/github/license/LuizRMSilva1973/analisecorporal)](LICENSE)

@@ -1,8 +1,7 @@
-import open3d as o3d
 import numpy as np
 import logging
 from scipy.spatial import ConvexHull
-from .config import MEASUREMENT_POINTS, MEASUREMENT_PARAMS
+from config import MEASUREMENT_POINTS, MEASUREMENT_PARAMS
 
 def extract_circumferences(pcd):
     """

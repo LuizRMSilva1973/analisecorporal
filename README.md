@@ -46,15 +46,15 @@ Arquivos‑chave:
 Diagrama do pipeline de medição:
 
 ```mermaid
-flowchart LR
-    A[.ply em data/] --> B[Carregar nuvem (Open3D)]
-    B --> C[Remover outliers]
-    C --> D[Centralizar e normais]
-    D --> E[Fatiar por Y em pontos]
-    E --> F[Projeção XZ]
-    F --> G[Casco convexo (ConvexHull)]
-    G --> H[Somar arestas => perímetro]
-    H --> I[Salvar CSV + log]
+graph LR
+    A["PLY em data"] --> B["Carregar nuvem Open3D"];
+    B --> C["Remover outliers"];
+    C --> D["Centralizar e normais"];
+    D --> E["Fatiar por Y em pontos"];
+    E --> F["Projeção XZ"];
+    F --> G["Casco convexo (ConvexHull)"];
+    G --> H["Somar arestas → perímetro"];
+    H --> I["Salvar CSV e log"];
 ```
 
 Opcionalmente, substitua por um print/gif do seu fluxo real:

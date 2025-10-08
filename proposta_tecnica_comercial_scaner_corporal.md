@@ -1,6 +1,6 @@
 # Proposta Técnica e Comercial para Sistema de Medição Automática de Circunferências Corporais
 
-Prezado(a) [Nome do Cliente],
+Prezado(a),
 
 Apresento abaixo a proposta formal para desenvolvimento e implantação de um sistema automatizado para extração de circunferências corporais em pontos padronizados (7 no tronco, 7 no braço, 10 na perna), com duas abordagens possíveis. Os valores de hardware são estimativas de mercado no momento, sujeitos a variações por câmbio, frete, estoque e fornecedores.
 
